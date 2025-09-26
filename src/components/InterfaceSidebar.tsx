@@ -20,8 +20,7 @@ type InterfaceSidebarProps = {
   onSelect: (key: InterfaceKey) => void;
   secondaryLinks: SecondaryLink[];
   account: AccountInfo;
-  renderFooter?: (selected: InterfaceKey) => ReactNode;
-};
+  renderFooter?: (selected: InterfaceKey) => ReactNode;`n  onAddProject?: () => void;`n};
 
 const SectionLabel = ({ children }: { children: ReactNode }) => (
   <p className="text-[11px] uppercase tracking-[0.32em] text-[color:var(--color-muted)]">{children}</p>
@@ -33,8 +32,7 @@ export default function InterfaceSidebar({
   onSelect,
   secondaryLinks,
   account,
-  renderFooter,
-}: InterfaceSidebarProps) {
+  renderFooter,`n  onAddProject,`n}: InterfaceSidebarProps) {
   return (
     <aside className="hidden w-[280px] flex-shrink-0 flex-col justify-between px-4 py-6 lg:flex lg:sticky lg:top-10 lg:self-start lg:max-h-[calc(100vh-5rem)] lg:overflow-y-auto">
       <div className="space-y-6">
@@ -42,7 +40,7 @@ export default function InterfaceSidebar({
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[rgba(74,92,106,0.28)] shadow-[var(--mainShadow)]">
             <img src="/brand/eaneer-mark.svg" alt="eaneer" className="h-6 w-6" />
           </div>
-          <div>
+                    <div className="px-2">`n            <button type="button" onClick={() => onAddProject?.()} className="btn-primary w-full min-h-[44px] mt-2">Add Project</button>`n          </div>`n<div>
             <p className="font-heading text-[15px] font-semibold text-[color:var(--color-text)]">eaneer</p>
             <p className="text-[11px] text-[color:var(--color-muted)]">Operations suite</p>
           </div>
@@ -118,5 +116,6 @@ export default function InterfaceSidebar({
     </aside>
   );
 }
+
 
 

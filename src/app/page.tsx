@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import { useEffect, useMemo, useState } from "react";
 import ClaimsPanel from "../components/ClaimsPanel";
 import DashboardHeader from "../components/DashboardHeader";
@@ -160,7 +160,7 @@ const metricsByInterface: Record<InterfaceKey, Metric[]> = {
       trend: "up",
       tone: "positive",
       annotation: "QA pass rate improving",
-      detail: "Testing → Verified this quarter",
+      detail: "Testing â†’ Verified this quarter",
     },
     {
       label: "Deadline breaches",
@@ -294,7 +294,7 @@ const metricsByInterface: Record<InterfaceKey, Metric[]> = {
       trend: "down",
       tone: "positive",
       annotation: "Backlog clearing",
-      detail: "Testing → Verified queue size",
+      detail: "Testing â†’ Verified queue size",
     },
     {
       label: "First-pass success",
@@ -446,7 +446,7 @@ const queuePanels: Partial<Record<InterfaceKey, QueuePanelData>> = {
     items: [
       { primary: "M-Pack 5kW", secondary: "Casa-Settat", meta: "Aging 12h", owner: "QA Team A" },
       { primary: "T-Pack 8kW", secondary: "Marrakech-Safi", meta: "Aging 26h", owner: "QA Team B" },
-      { primary: "M-Pack 3kW", secondary: "Rabat-Salé", meta: "Aging 6h", owner: "QA Team A" },
+      { primary: "M-Pack 3kW", secondary: "Rabat-SalÃ©", meta: "Aging 6h", owner: "QA Team A" },
     ],
   },
   qa: {
@@ -501,17 +501,17 @@ const timelineSources: Record<RangeKey, TimelinePoint[]> = {
 };
 const rangeDetail: Record<RangeKey, RangeInsights> = {
   "90d": {
-    activation: { value: "6.4 days", caption: "Median Draft → Active after payment" },
+    activation: { value: "6.4 days", caption: "Median Draft â†’ Active after payment" },
     qa: { value: "74%", caption: "Projects verified without rework" },
     breaches: { value: "5", caption: "`deadline.breach` events", tone: "negative" },
   },
   "30d": {
-    activation: { value: "5.8 days", caption: "Median Draft → Active" },
+    activation: { value: "5.8 days", caption: "Median Draft â†’ Active" },
     qa: { value: "78%", caption: "QA first pass success" },
     breaches: { value: "3", caption: "Events escalated to Admin", tone: "neutral" },
   },
   "7d": {
-    activation: { value: "5.1 days", caption: "Median Draft → Active" },
+    activation: { value: "5.1 days", caption: "Median Draft â†’ Active" },
     qa: { value: "81%", caption: "QA first pass success" },
     breaches: { value: "1", caption: "Events escalated to Admin", tone: "positive" },
   },
@@ -543,7 +543,7 @@ const marketplaceProjects: MarketplaceProject[] = [
     city: "Casablanca",
     region: "Casablanca-Settat",
     statusKey: "active",
-    statusLabel: "Claimed – installing",
+    statusLabel: "Claimed â€“ installing",
     deadline: "Sep 30",
     claimState: "Locked",
     installer: "Atlas Solar Crew",
@@ -590,7 +590,7 @@ const marketplaceProjects: MarketplaceProject[] = [
     client: "TechPark HQ",
     pack: "M-Pack 15kW",
     city: "Rabat",
-    region: "Rabat-Salé",
+    region: "Rabat-SalÃ©",
     statusKey: "ready",
     statusLabel: "Ready for QA",
     deadline: "Sep 24",
@@ -674,7 +674,7 @@ const secondaryToneToClass = (tone: Tone) => {
   }
   return accentNeutral;
 };
-const trendIcon = (trend: Trend) => (trend === "up" ? "▲" : "▼");
+const trendIcon = (trend: Trend) => (trend === "up" ? "â–²" : "â–¼");
 export default function Home() {
   const [selectedInterface, setSelectedInterface] = useState<InterfaceKey>("dashboard");
   const [selectedRange, setSelectedRange] = useState<RangeKey>("90d");
@@ -709,11 +709,11 @@ export default function Home() {
       ? marketplaceProjects.filter((project) => project.statusKey === "equipment" || project.statusKey === "ready")
       : marketplaceProjects;
     if (marketplaceFilter === "all") {
-      return base.map((p) => (p.id === "mk-01" ? { ...p, statusLabel: "Claimed → Installing" } : p));
+      return base.map((p) => (p.id === "mk-01" ? { ...p, statusLabel: "Claimed â†’ Installing" } : p));
     }
     return base
       .filter((project) => project.statusKey === marketplaceFilter)
-      .map((p) => (p.id === "mk-01" ? { ...p, statusLabel: "Claimed → Installing" } : p));
+      .map((p) => (p.id === "mk-01" ? { ...p, statusLabel: "Claimed â†’ Installing" } : p));
   }, [selectedInterface, marketplaceFilter]);
   const currentMarketplaceFilters = useMemo(() => {
     if (selectedInterface === "installers") {
@@ -765,7 +765,7 @@ export default function Home() {
           onSelect={setSelectedInterface}
           secondaryLinks={secondaryLinks}
           account={accountInfo}
-          renderFooter={renderSidebarFooter}
+          onAddProject={() => setProjectModalOpen(true)}`n          renderFooter={renderSidebarFooter}
         />
         <main className="flex-1 space-y-8 pb-12">
           <MobileInterfaceTabs
@@ -871,3 +871,4 @@ export default function Home() {
     </div>
   );
 }
+
