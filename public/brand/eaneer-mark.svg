@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="eaneer mark">
+  <rect width="128" height="128" rx="24" fill="#11212d"/>
+  <g filter="url(#s)">
+    <path d="M74 20L38 56l20 0-4 32 40-40-22 0 2-28z" fill="#ffffff"/>
+  </g>
+  <defs>
+    <filter id="s" x="0" y="0" width="128" height="128" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#06141b" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+</svg>
+
